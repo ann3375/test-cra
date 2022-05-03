@@ -5,7 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  plugins: ['react-hooks'],
+  plugins: ['react-hooks', 'import'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -25,6 +25,25 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/display-name': 'off',
     'react/react-in-jsx-scope': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
   settings: {
     react: {
